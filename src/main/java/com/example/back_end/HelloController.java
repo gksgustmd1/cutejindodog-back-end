@@ -7,7 +7,7 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-    @GetMapping("/api/users")
+    @GetMapping("/")
     public List<String> getUsers() {
         return List.of("Alice", "Bob", "Charlie");
     }
