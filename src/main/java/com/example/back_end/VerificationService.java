@@ -18,7 +18,17 @@ public class VerificationService {
 
     // 인증 코드 검증
     public boolean verifyCode(String email, String code) {
-        return code.equals(verificationCodes.get(email));
+        String savedCode = verificationCodes.get(email);
+
+        System.out.println("==== 코드 검증 시도 ====");
+        System.out.println("서버 저장 코드: [" + savedCode + "]");
+        System.out.println("사용자 입력 코드: [" + code + "]");
+        // 프론트에서 코드가 null이거나, 저장된 코드가 없으면 false
+        if (code == null || savedCode == null) {
+            return false;
+        }
+
+        return savedCode.equals(code);
     }
 
     // 인증 코드 제거
